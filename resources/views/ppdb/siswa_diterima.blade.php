@@ -30,13 +30,13 @@
                                 <td>{{ $data->siswa->nama_siswa }}</td>
                                 <td>{{ $data->siswa->no_induk }}</td>
                                 <td>
-                                    <a href="" class="btn btn-info btn-sm">
+                                    <a href="{{ route('ppdb.show', $data) }}" class="btn btn-info btn-sm">
                                         <i class="nav-icon fas fa-trash-alt"> </i>
                                         &nbsp; Data Diri</a>
                                     <a href="{{ route('ppdb.reject', $data->id) }}" class="btn btn-danger btn-sm">
                                         <i class="nav-icon fas fa-trash-alt"> </i>
                                         &nbsp; Hapus</a>
-                                    <a href="" class="btn btn-success btn-sm">
+                                    <a href="{{ route('siswa.index') }}" class="btn btn-success btn-sm">
                                         <i class="nav-icon fas fa-pen"></i> &nbsp;
                                         Buat Akun
                                     </a>
