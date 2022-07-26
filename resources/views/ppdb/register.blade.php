@@ -126,15 +126,38 @@
                             </div>
                             <div class="mt-4">
                                 <div class="grid grid-cols-4 items-center gap-3">
-                                    <label class="col-span-1 font-semibold text-sm" for="distance">
-                                        Jarak Rumah ke Sekolah :
+                                    <label class="col-span-1 font-semibold text-sm" for="distance">Jarak Dari Rumah Ke Sekolah:</label>
+                                    <select
+                                        class="col-span-3 rounded py-2 font-semibold
+                                     px-3 text-sm focus:outline-none bg-gray-200 focus:bg-white border-2 transition duration-200
+                                     focus:border-gray-200"
+                                        type="text" name="distance" id="distance" placeholder="Nama" required>
+                                        <option value="<1KM"><1KM</option>
+                                        <option value="1KM">1KM</option>
+                                        <option value="2KM">2KM</option>
+                                        <option value="3KM">3KM</option>
+                                        <option value="4KM">4KM</option>
+                                        <option value="5KM">5KM</option>
+                                        <option value="6KM">6KM</option>
+                                        <option value="7KM">7KM</option>
+                                        <option value="8KM">8KM</option>
+                                        <option value="9KM">9KM</option>
+                                        <option value="10KM">10KM</option>
+                                        <option value=">10KM">>10KM</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <div class="grid grid-cols-4 items-center gap-3">
+                                    <label class="col-span-1 font-semibold text-sm" for="ss_distance">
+                                        Screenshot Jarak Dari Rumah Ke Sekolah:</label>
                                     </label>
                                     <input
                                         class="col-span-3 rounded py-2 font-semibold
                                      px-3 text-sm focus:outline-none bg-gray-200 focus:bg-white border-2 transition duration-200
                                      focus:border-gray-200"
-                                        type="text" name="distance" id="distance"
-                                        placeholder="Jarak Rumah ke Sekolah" disabled />
+                                        type="file" name="ss_distance" id="ss_distance"
+                                        placeholder="Pilih" required value="{{ old('ss_distance') }}" accept="image/*">
                                 </div>
                             </div>
                             <div class="mt-4">

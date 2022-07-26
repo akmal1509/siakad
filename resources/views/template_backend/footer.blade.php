@@ -1,11 +1,5 @@
 <footer class="main-footer">
-    <marquee>
-        <strong>Copyright &copy;
-            <script>
-                document.write(new Date().getFullYear());
-            </script> &diams; <a href="http://smkn1jenpo.sch.id/">SD Negeri Apa Aja</a>.
-        </strong>
-    </marquee>
+
 </footer>
 
 <!-- Control Sidebar -->

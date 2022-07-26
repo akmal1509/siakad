@@ -26,9 +26,6 @@
     </div>
 
     <footer style="color: white;">
-      <marquee>
-          <strong>Copyright &copy; <script>document.write(new Date().getFullYear());</script> &diams; <a href="https://www.kemdikbud.go.id/" target="_blank" style="color: white;">SD Negeri Apa Aja</a>. </strong>
-      </marquee>
     </footer>
   </div>
 

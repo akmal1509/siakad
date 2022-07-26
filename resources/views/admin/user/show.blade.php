@@ -22,7 +22,7 @@
             <tr>
                 <th>No.</th>
                 <th>Nama</th>
-                <th>Login ID</th>
+                <th>Email</th>
                 @foreach ($role as $d => $data)
                   @if ($d == 'Guru')
                     <th>No Id Card</th>

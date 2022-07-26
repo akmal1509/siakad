@@ -114,7 +114,8 @@ class PPDBController extends Controller
             "kartu_keluarga_surat_keterangan_domisili" => "required|mimes:pdf",
             "kartu_kip_kkks_sktm" => "mimes:pdf",
             "kartu_nisn" => "required|mimes:pdf",
-            "foto_siswa" => "required|mimes:jpg,jpeg,png"
+            "foto_siswa" => "required|mimes:jpg,jpeg,png",
+            'distance' => 'required',
         ];
 
         $message = [
@@ -147,6 +148,12 @@ class PPDBController extends Controller
             'tgl_lahir' => $request->tanggal_lahir,
             'foto' => $filename,
         ]);
+
+        if ($request->hasFile('ss_distance')) {
+            $file = $request->file('ss_distance');
+            $ss_distance_filename = $file->getClientOriginalName() . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('ss_distance'), $ss_distance_filename);
+        }
 
         if ($request->hasFile('srt_k_lulus')) {
             $file = $request->file('srt_k_lulus');
@@ -190,28 +197,33 @@ class PPDBController extends Controller
             $file->move(public_path('kartu_nisn'), $kartu_nisn_filename);
         }
 
-        $data_files = [[
-            'key' => 'srt_k_lulus',
-            'value' => $srt_k_lulus_filename,
-        ], [
-            'key' => 'ijazah_sd_mi',
-            'value' => $ijazah_sd_mi_filename,
-        ], [
-            'key' => 'sertifikat_hasil_ujian_sekolah',
-            'value' => $sertifikat_hasil_ujian_sekolah_filename,
-        ], [
-            'key' => 'akte_kelahiran_surat_kenal_lahir',
-            'value' => $akte_kelahiran_surat_kenal_lahir_filename,
-        ], [
-            'key' => 'kartu_keluarga_surat_keterangan_domisili',
-            'value' => $kartu_keluarga_surat_keterangan_domisili_filename,
-        ], [
-            'key' => 'kartu_kip_kkks_sktm',
-            'value' => $kartu_kip_kkks_sktm_filename,
-        ], [
-            'key' => 'kartu_nisn',
-            'value' => $kartu_nisn_filename,
-        ]];
+        $data_files = [
+            [
+                'key' => 'ss_distance',
+                'value' => $ss_distance_filename,
+            ], [
+                'key' => 'srt_k_lulus',
+                'value' => $srt_k_lulus_filename,
+            ], [
+                'key' => 'ijazah_sd_mi',
+                'value' => $ijazah_sd_mi_filename,
+            ], [
+                'key' => 'sertifikat_hasil_ujian_sekolah',
+                'value' => $sertifikat_hasil_ujian_sekolah_filename,
+            ], [
+                'key' => 'akte_kelahiran_surat_kenal_lahir',
+                'value' => $akte_kelahiran_surat_kenal_lahir_filename,
+            ], [
+                'key' => 'kartu_keluarga_surat_keterangan_domisili',
+                'value' => $kartu_keluarga_surat_keterangan_domisili_filename,
+            ], [
+                'key' => 'kartu_kip_kkks_sktm',
+                'value' => $kartu_kip_kkks_sktm_filename,
+            ], [
+                'key' => 'kartu_nisn',
+                'value' => $kartu_nisn_filename,
+            ]
+        ];
 
         $siswa->siswa_files()->createMany($data_files);
         $siswa->ppdb()->create([
@@ -229,6 +241,7 @@ class PPDBController extends Controller
             'pekerjaan_wali' => $request->pekerjaan_wali,
             'agama_wali' => $request->agama_wali,
             'no_telp_wali' => $request->no_hp_wali,
+            'distance' => $request->distance,
         ]);
         $siswa->save();
         return redirect()->route('siswa.index')->withSuccess('Data berhasil ditambahkan');

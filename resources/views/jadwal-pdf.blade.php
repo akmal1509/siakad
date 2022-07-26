@@ -41,15 +41,6 @@
                         </tr>
                     @endforeach
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="5" class="text-center"><strong>Copyright &copy;
-                                <script>
-                                    document.write(new Date().getFullYear());
-                                </script> :: <a href="">SD Negeri Apa Aja</a>.
-                            </strong></th>
-                    </tr>
-                </tfoot>
             </table>
         </div>
     </div>
