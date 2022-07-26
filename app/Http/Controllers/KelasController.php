@@ -44,7 +44,7 @@ class KelasController extends Controller
     {
         if ($request->id != '') {
             $this->validate($request, [
-                'nama_kelas' => 'required|min:6|max:10',
+                'nama_kelas' => 'required',
                 'guru_id' => 'required|unique:kelas',
             ]);
         } else {
