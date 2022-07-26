@@ -2,9 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class AddSSDistanceToPpdbTable extends Migration
+class UpdateNoTelpOrtuToPpdbTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +15,8 @@ class AddSSDistanceToPpdbTable extends Migration
     public function up()
     {
         Schema::table('ppdb', function (Blueprint $table) {
-            $table->string('ss_distance')->nullable();
+            DB::statement('ALTER TABLE ppdb CHANGE no_telp_ortu no_telp_ortu VARCHAR(200)');
+            DB::statement('ALTER TABLE ppdb CHANGE no_telp_wali no_telp_wali VARCHAR(200)');
         });
     }
 

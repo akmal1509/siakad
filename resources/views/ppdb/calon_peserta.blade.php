@@ -40,13 +40,16 @@
                                 </td>
                                 <td>{{ $data->distance }}</td>
                                 <td>
-                                    <a href="{{ route('ppdb.reject', $data->id) }}" class="btn btn-danger btn-sm">
+                                    <a href="{{ route('ppdb.show', $data) }}" class="btn btn-primary btn-sm">
+                                        <i class="nav-icon fas fa-eye"> </i>
+                                        &nbsp; Detail</a>
+                                    <button onclick="reject(event)" data-route="{{ route('ppdb.reject', $data->id) }}" class="btn btn-danger btn-sm">
                                         <i class="nav-icon fas fa-trash-alt"> </i>
-                                        &nbsp; Tolak</a>
-                                    <a href="{{ route('ppdb.accept', $data->id) }}" class="btn btn-success btn-sm">
+                                        &nbsp; Tolak</button>
+                                    <button onclick="accept(event)" data-route="{{ route('ppdb.accept', $data->id) }}" class="btn btn-success btn-sm">
                                         <i class="nav-icon fas fa-eye"></i> &nbsp;
                                         Terima
-                                    </a>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach

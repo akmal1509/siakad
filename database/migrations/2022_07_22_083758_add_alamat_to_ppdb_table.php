@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSSDistanceToPpdbTable extends Migration
+class AddAlamatToPpdbTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddSSDistanceToPpdbTable extends Migration
     public function up()
     {
         Schema::table('ppdb', function (Blueprint $table) {
-            $table->string('ss_distance')->nullable();
+            $table->string('alamat')->nullable();
         });
     }
 

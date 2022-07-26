@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PPDBStatusUpdated;
 use App\PPDB;
 use App\Siswa;
 use App\SiswaFile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class PPDBController extends Controller
@@ -45,6 +47,9 @@ class PPDBController extends Controller
         $ppdb->status = 'accepted';
         $ppdb->save();
         $name = $ppdb->siswa->nama_siswa;
+
+        Mail::to($ppdb->email)->send(new PPDBStatusUpdated('accepted'));
+
         return redirect()->route('ppdb.index')->withSuccess("Calon Siswa $name diterima");
     }
 
@@ -54,6 +59,9 @@ class PPDBController extends Controller
         $ppdb->status = 'rejected';
         $ppdb->save();
         $name = $ppdb->siswa->nama_siswa;
+
+        Mail::to($ppdb->email)->send(new PPDBStatusUpdated('rejected'));
+
         return redirect()->route('ppdb.index')->withError("Calon Siswa $name ditolak");
     }
 
@@ -65,6 +73,7 @@ class PPDBController extends Controller
             $ppdb = PPDB::find($id);
             $ppdb->status = 'accepted';
             $ppdb->save();
+            Mail::to($ppdb->email)->send(new PPDBStatusUpdated('accepted'));
         }
         return redirect()->route('ppdb.index')->withSuccess("Calon Siswa diterima");
     }
@@ -77,6 +86,7 @@ class PPDBController extends Controller
             $ppdb = PPDB::find($id);
             $ppdb->status = 'rejected';
             $ppdb->save();
+            Mail::to($ppdb->email)->send(new PPDBStatusUpdated('rejected'));
         }
         return redirect()->route('ppdb.index')->withError("Calon Siswa ditolak");
     }
@@ -91,6 +101,7 @@ class PPDBController extends Controller
     {
         $rules = [
             "name" => "required",
+            "email" => "required|email",
             "NIK" => "required",
             "NISN" => "required|unique:siswa,no_induk",
             "no_usbn" => "required|unique:ppdb,no_usbn",
@@ -138,10 +149,12 @@ class PPDBController extends Controller
             $file = $request->file('foto_siswa');
             $filename = $file->getClientOriginalName() . '-' . time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('foto_siswa'), $filename);
+            $filename = 'foto_siswa/' . $filename;
         }
 
         $siswa = Siswa::create([
             'no_induk' => $request->NISN,
+            'nis' => $request->NISN,
             'nama_siswa' => $request->name,
             'agama' => $request->religion,
             'tmp_lahir' => $request->tempat_lahir,
@@ -241,7 +254,9 @@ class PPDBController extends Controller
             'pekerjaan_wali' => $request->pekerjaan_wali,
             'agama_wali' => $request->agama_wali,
             'no_telp_wali' => $request->no_hp_wali,
+            'alamat' => $request->alamat,
             'distance' => $request->distance,
+            'email' => $request->email,
         ]);
         $siswa->save();
         return redirect()->route('siswa.index')->withSuccess('Data berhasil ditambahkan');
@@ -253,9 +268,11 @@ class PPDBController extends Controller
      * @param  \App\PPDB  $pPDB
      * @return \Illuminate\Http\Response
      */
-    public function show(PPDB $pPDB)
+    public function show($id)
     {
-        //
+        $pPDB = PPDB::find($id);
+        // dd($pPDB);
+        return view('ppdb.details', compact('pPDB'));
     }
 
     /**

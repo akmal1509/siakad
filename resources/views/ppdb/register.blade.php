@@ -43,6 +43,17 @@
                             </div>
                             <div class="mt-4">
                                 <div class="grid grid-cols-4 items-center gap-3">
+                                    <label class="col-span-1 font-semibold text-sm" for="email">Email :</label>
+                                    <input
+                                        class="col-span-3 rounded py-2 font-semibold
+                                     px-3 text-sm focus:outline-none bg-gray-200 focus:bg-white border-2 transition duration-200
+                                     focus:border-gray-200"
+                                        type="email" name="email" id="email" placeholder="email" required
+                                        value="{{ old('email') }}">
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <div class="grid grid-cols-4 items-center gap-3">
                                     <label class="col-span-1 font-semibold text-sm" for="gender">Jenis Kelamin :</label>
                                     <select
                                         class="col-span-3 rounded py-2 font-semibold
@@ -354,7 +365,7 @@
                                         class="col-span-3 rounded py-2 font-semibold
                                      px-3 text-sm focus:outline-none bg-gray-200 focus:bg-white border-2 transition duration-200
                                      focus:border-gray-200"
-                                        type="text" name="no_hp_wali" id="no_hp_wali"
+                                        type="number" name="no_hp_wali" id="no_hp_wali"
                                         placeholder="Nomor HP Wali Calon" value="{{ old('no_hp_wali') }}">
                                 </div>
                             </div>
