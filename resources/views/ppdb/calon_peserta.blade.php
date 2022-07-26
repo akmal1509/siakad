@@ -12,7 +12,7 @@
                     <thead>
                         <tr>
                             <th>
-                                <input type="checkbox" id="check-all"  />
+                                <input type="checkbox" id="check-all" />
                             </th>
                             <th>No.</th>
                             <th>Nama Siswa</th>
@@ -43,13 +43,13 @@
                                     <a href="{{ route('ppdb.show', $data) }}" class="btn btn-primary btn-sm">
                                         <i class="nav-icon fas fa-eye"> </i>
                                         &nbsp; Detail</a>
-                                    <button onclick="reject(event)" data-route="{{ route('ppdb.reject', $data->id) }}" class="btn btn-danger btn-sm">
+                                    <a href="{{ route('ppdb.reject', $data->id) }}" class="btn btn-danger btn-sm">
                                         <i class="nav-icon fas fa-trash-alt"> </i>
-                                        &nbsp; Tolak</button>
-                                    <button onclick="accept(event)" data-route="{{ route('ppdb.accept', $data->id) }}" class="btn btn-success btn-sm">
+                                        &nbsp; Tolak</a>
+                                    <a href="{{ route('ppdb.accept', $data->id) }}" class="btn btn-success btn-sm">
                                         <i class="nav-icon fas fa-eye"></i> &nbsp;
                                         Terima
-                                    </button>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
@@ -65,6 +65,7 @@
                         &nbsp; Terima</button>
                 </form>
                 <form method="POST" action="{{ route('ppdb.bulk.reject') }}" id="rejectSiswa">
+                    <input type="hidden" name="ids" id="ids_r" value="" />
                     <button type="button" class="btn btn-danger btn-sm" id="btnReject"><i
                             class="nav-icon fas fa-trash-alt"></i>
                         &nbsp; Tolak</button>
@@ -117,7 +118,7 @@
                     ids.push(checkbox.value);
                 }
             });
-            rejectSiswa.querySelector("#ids").value = ids;
+            rejectSiswa.querySelector("#ids_r").value = ids;
             rejectSiswa.submit();
         });
     </script>
