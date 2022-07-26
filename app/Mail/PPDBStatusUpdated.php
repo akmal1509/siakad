@@ -28,7 +28,9 @@ class PPDBStatusUpdated extends Mailable
      */
     public function build()
     {
-        return $this->view('ppdb.mail')->with([
+        return $this->view('ppdb.mail')
+        ->subject("PPDB SMPN 1 Sindangkerta")
+        ->with([
             'status' => $this->status,
         ]);;
     }

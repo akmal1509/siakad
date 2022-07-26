@@ -39,54 +39,90 @@
                     <table class="table table-striped">
                         <tbody>
                             <tr class=" mb-2">
-                                <td>No Peserta USBN SD </td><td>:</td><td> {{ $pPDB->no_usbn }}</td>
+                                <td>Email</td>
+                                <td>:</td>
+                                <td> {{ $pPDB->email }}</td>
                             </tr>
                             <tr class=" mb-2">
-                                <td>Alamat Calon </td><td>:</td><td> {{ $pPDB->alamat }}</td>
+                                <td>No Peserta USBN SD </td>
+                                <td>:</td>
+                                <td> {{ $pPDB->no_usbn }}</td>
                             </tr>
                             <tr class=" mb-2">
-                                <td>Jarak Calon </td><td>:</td><td> {{ $pPDB->distance }}</td>
+                                <td>Alamat Calon </td>
+                                <td>:</td>
+                                <td> {{ $pPDB->alamat }}</td>
                             </tr>
                             <tr class=" mb-2">
-                                <td>SS Jarak Calon </td><td>:</td><td>  <img src="{{ asset($pPDB->ss_distance) }}" alt=""
-                                        srcset=""></td>
+                                <td>Jarak Calon </td>
+                                <td>:</td>
+                                <td> {{ $pPDB->distance }}</td>
                             </tr>
                             <tr class=" mb-2">
-                                <td>Asal Sekolah </td><td>:</td><td> {{ $pPDB->asal_sekolah }}</td>
+                                <td>SS Jarak Calon </td>
+                                <td>:</td>
+                                <td> <img src="{{ asset('ss_distance/' . $pPDB->ss_distance) }}" alt="" srcset=""></td>
                             </tr>
                             <tr class=" mb-2">
-                                <td>Tahun Lulus </td><td>:</td><td> {{ $pPDB->tahun_lulus }}</td>
+                                <td>Asal Sekolah </td>
+                                <td>:</td>
+                                <td> {{ $pPDB->asal_sekolah }}</td>
                             </tr>
                             <tr class=" mb-2">
-                                <td>Agama </td><td>:</td><td> {{ $pPDB->siswa->agama }}</td>
+                                <td>Tahun Lulus </td>
+                                <td>:</td>
+                                <td> {{ $pPDB->tahun_lulus }}</td>
                             </tr>
                             <tr class=" mb-2">
-                                <td>Nomor KKS </td><td>:</td><td> {{ $pPDB->no_kks }}</td>
+                                <td>Agama </td>
+                                <td>:</td>
+                                <td> {{ $pPDB->siswa->agama }}</td>
+                            </tr>
+                            <tr class=" mb-2">
+                                <td>Nomor KKS </td>
+                                <td>:</td>
+                                <td> {{ $pPDB->no_kks }}</td>
                             </tr>
 
                             <tr class=" mb-2">
-                                <td>Nama Orang Tua </td><td>:</td><td> {{ $pPDB->nama_ortu }}</td>
+                                <td>Nama Orang Tua </td>
+                                <td>:</td>
+                                <td> {{ $pPDB->nama_ortu }}</td>
                             </tr>
                             <tr class=" mb-2">
-                                <td>No. Telepon Orang Tua </td><td>:</td><td> {{ $pPDB->no_telp_ortu }}</td>
+                                <td>No. Telepon Orang Tua </td>
+                                <td>:</td>
+                                <td> {{ $pPDB->no_telp_ortu }}</td>
                             </tr>
                             <tr class=" mb-2">
-                                <td>Alamat Orang Tua </td><td>:</td><td> {{ $pPDB->alamat_ortu }}</td>
+                                <td>Alamat Orang Tua </td>
+                                <td>:</td>
+                                <td> {{ $pPDB->alamat_ortu }}</td>
                             </tr>
                             <tr class=" mb-2">
-                                <td>Agama Orang Tua </td><td>:</td><td> {{ $pPDB->agama_ortu }}</td>
+                                <td>Agama Orang Tua </td>
+                                <td>:</td>
+                                <td> {{ $pPDB->agama_ortu }}</td>
                             </tr>
                             <tr class=" mb-2">
-                                <td>Nama Wali </td><td>:</td><td> {{ $pPDB->nama_wali }}</td>
+                                <td>Nama Wali </td>
+                                <td>:</td>
+                                <td> {{ $pPDB->nama_wali }}</td>
                             </tr>
                             <tr class=" mb-2">
-                                <td>No. Telepon Wali </td><td>:</td><td> {{ $pPDB->no_telp_wali }}</td>
+                                <td>No. Telepon Wali </td>
+                                <td>:</td>
+                                <td> {{ $pPDB->no_telp_wali }}</td>
                             </tr>
                             <tr class=" mb-2">
-                                <td>Alamat Wali </td><td>:</td><td> {{ $pPDB->alamat_wali }}</td>
+                                <td>Alamat Wali </td>
+                                <td>:</td>
+                                <td> {{ $pPDB->alamat_wali }}</td>
                             </tr>
                             <tr class=" mb-2">
-                                <td>Agama Wali </td><td>:</td><td> {{ $pPDB->agama_wali }}</td>
+                                <td>Agama Wali </td>
+                                <td>:</td>
+                                <td> {{ $pPDB->agama_wali }}</td>
                             </tr>
                         </tbody>
                     </table>
