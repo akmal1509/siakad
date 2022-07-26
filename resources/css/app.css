@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.step-active {
+    @apply rounded-full bg-white border-2 py-2 px-4 font-semibold text-blue-500 text-sm border-white text-center;
+
+}
+
+.step {
+    @apply rounded-full border-white border-2 py-2 px-4 font-semibold text-white text-sm bg-blue-500 text-center cursor-default;
+}
