@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Kelas;
 use App\Mail\PPDBStatusUpdated;
 use App\PPDB;
 use App\Siswa;
@@ -26,7 +27,8 @@ class PPDBController extends Controller
     public function siswa_diterima()
     {
         $ppdbs = PPDB::where('status', 'accepted')->orderBy('distance', 'desc')->get();
-        return view('ppdb.siswa_diterima', compact('ppdbs'));
+        $kelas = Kelas::get();
+        return view('ppdb.siswa_diterima', compact('ppdbs', 'kelas'));
     }
 
     /**
