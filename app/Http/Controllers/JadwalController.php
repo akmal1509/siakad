@@ -295,15 +295,15 @@ class JadwalController extends Controller
 
         $mapel = Mapel::find($mapel_id)->first();
 
-        if ($mapel->kelompok == 'A') {
-            $guru = Kelas::find($kelas_id)->first();
+        // if ($mapel->kelompok == 'A') {
+        //     $guru = Kelas::find($kelas_id)->first();
 
 
 
-            return view('admin.jadwal.ajax_single', compact('guru'));
-        } else {
-            $guru = Guru::doesntHave('kelas')->get();
+        //     return view('admin.jadwal.ajax_single', compact('guru'));
+        // } else {
+            $guru = Guru::get();
             return view('admin.jadwal.ajax_multiple', compact('guru'));
-        }
+        // }
     }
 }
