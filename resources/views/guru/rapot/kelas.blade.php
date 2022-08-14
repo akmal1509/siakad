@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-md-12">
                         <table id="example2" class="table table-bordered table-striped table-hover">
-                            @if ($guru->tipe == 'khusus')
+                            {{-- @if ($guru->tipe == 'khusus') --}}
                                 <thead>
                                     <tr>
                                         <th>No.</th>
@@ -46,7 +46,7 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-                            @else
+                            {{-- @else
                                 <thead>
                                     <tr>
                                         <th>No.</th>
@@ -66,7 +66,7 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-                            @endif
+                            @endif --}}
 
                         </table>
                     </div>
