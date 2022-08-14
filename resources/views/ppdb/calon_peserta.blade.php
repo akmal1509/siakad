@@ -23,6 +23,34 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            
+                            function hp($nohp)
+                            {
+                                // kadang ada penulisan no hp 0811 239 345
+                                $nohp = str_replace(' ', '', $nohp);
+                                // kadang ada penulisan no hp (0274) 778787
+                                $nohp = str_replace('(', '', $nohp);
+                                // kadang ada penulisan no hp (0274) 778787
+                                $nohp = str_replace(')', '', $nohp);
+                                // kadang ada penulisan no hp 0811.239.345
+                                $nohp = str_replace('.', '', $nohp);
+                            
+                                // cek apakah no hp mengandung karakter + dan 0-9
+                                if (!preg_match('/[^+0-9]/', trim($nohp))) {
+                                    // cek apakah no hp karakter 1-3 adalah +62
+                                    if (substr(trim($nohp), 0, 3) == '+62') {
+                                        $nohp = trim($nohp);
+                                    }
+                                    // cek apakah no hp karakter 1 adalah 0
+                                    elseif (substr(trim($nohp), 0, 1) == '0') {
+                                        $nohp = '+62' . substr(trim($nohp), 1);
+                                    }
+                                }
+                            
+                                return str_replace('+', '', $nohp);
+                            }
+                        @endphp
                         @foreach ($ppdbs as $result => $data)
                             <tr>
                                 <td>
@@ -43,13 +71,17 @@
                                     <a href="{{ route('ppdb.show', $data) }}" class="btn btn-primary btn-sm">
                                         <i class="nav-icon fas fa-eye"> </i>
                                         &nbsp; Detail</a>
-                                    <a href="{{ route('ppdb.reject', $data->id) }}" class="btn btn-danger btn-sm">
+                                    <button onclick="tolak(event)" data-href="{{ route('ppdb.reject', $data->id) }}"
+                                        data-wa='https://api.whatsapp.com/send?phone={{ hp($data->no_telp_ortu) }}&text=Maaf%20anda%20tidak%20lolos%20di%20SMPN%201%20Sindangkerta.'
+                                        class="btn btn-danger btn-sm">
                                         <i class="nav-icon fas fa-trash-alt"> </i>
-                                        &nbsp; Tolak</a>
-                                    <a href="{{ route('ppdb.accept', $data->id) }}" class="btn btn-success btn-sm">
+                                        &nbsp; Tolak</button>
+                                    <button onclick="terima(event)" data-href="{{ route('ppdb.accept', $data->id) }}"
+                                        data-wa='https://api.whatsapp.com/send?phone={{ hp($data->no_telp_ortu) }}&text=Selamat%20anda%20di%20terima%20di%20SMPN%201%20Sindangkerta.%20Harap%20membawa%20uang%20untuk%20pembayaran%20uang%20pakaian.'
+                                        class="btn btn-success btn-sm">
                                         <i class="nav-icon fas fa-eye"></i> &nbsp;
                                         Terima
-                                    </a>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
@@ -121,5 +153,29 @@
             rejectSiswa.querySelector("#ids_r").value = ids;
             rejectSiswa.submit();
         });
+
+        function tolak(e) {
+            e.preventDefault();
+            let href = e.target.dataset.href;
+
+            let waUrl = e.target.dataset.wa;
+
+            window.open(waUrl, '_blank');
+
+            window.location.href = href;
+
+        }
+
+        function terima(e) {
+            e.preventDefault();
+            let href = e.target.dataset.href;
+
+            let waUrl = e.target.dataset.wa;
+
+            window.open(waUrl, '_blank');
+
+            window.location.href = href;
+
+        }
     </script>
 @endsection
