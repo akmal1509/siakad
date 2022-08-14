@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-md-12">
                         <table id="example2" class="table table-bordered table-striped table-hover">
-                            {{-- @if ($guru->tipe == 'khusus') --}}
+                         
                                 <thead>
                                     <tr>
                                         <th>No.</th>
@@ -46,27 +46,7 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-                            {{-- @else
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Nama Kelas</th>
-                                        <th>Aksi</th>
-                                </thead>
-                                <tbody>
-                                    <?php $no = 1; ?>
-                                    @foreach ($jadwal_gk as $val)
-                                        <tr>
-                                            <td>{{ $no++ }}</td>
-                                            <td>{{ $val->mapel->nama_mapel }}</td>
-                                            <td><a href="{{ route('rapot.show2', ['id' => Crypt::encrypt($val->kelas_id), 'mapel_id' => Crypt::encrypt($val->mapel_id)]) }}"
-                                                    class="btn btn-primary btn-sm"><i class="nav-icon fas fa-pen"></i>
-                                                    &nbsp;
-                                                    Entry Nilai</a></td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            @endif --}}
+
 
                         </table>
                     </div>
