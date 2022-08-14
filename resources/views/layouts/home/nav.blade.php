@@ -7,7 +7,7 @@
             </a>
         </li>
         <li>
-            <a href="#"
+            <a href="#about_us"
                 class="font-semibold hover:bg-blue-600 py-2 px-3 transition duration-300 text-sm rounded-lg">
                 About Us
             </a>
