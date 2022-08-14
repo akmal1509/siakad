@@ -261,7 +261,7 @@ class PPDBController extends Controller
             'email' => $request->email,
         ]);
         $siswa->save();
-        return redirect()->route('siswa.index')->withSuccess('Data berhasil ditambahkan');
+        return redirect()->back()->withSuccess('Selamat pendaftaran anda berhasil');
     }
 
     /**
