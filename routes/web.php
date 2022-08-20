@@ -152,6 +152,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/jadwal/import_excel', 'JadwalController@import_excel')->name('jadwal.import_excel');
     Route::delete('/jadwal/deleteAll', 'JadwalController@deleteAll')->name('jadwal.deleteAll');
     Route::resource('/jadwal', 'JadwalController');
+    Route::get('/cekJamMulai', 'JadwalController@cekJamMulai')->name('cekJamMulai');
     Route::get('/ulangan-kelas', 'UlanganController@create')->name('ulangan-kelas');
     Route::get('/ulangan-siswa/{id}', 'UlanganController@edit')->name('ulangan-siswa');
     Route::get('/ulangan-show/{id}', 'UlanganController@ulangan')->name('ulangan-show');

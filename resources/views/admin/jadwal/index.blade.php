@@ -11,16 +11,16 @@
                     <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target=".tambah-jadwal">
                         <i class="nav-icon fas fa-folder-plus"></i> &nbsp; Tambah Data Jadwal
                     </button>
-<!--
-                    <a href="{{ route('jadwal.export_excel') }}" class="btn btn-success btn-sm my-3" target="_blank"><i
-                            class="nav-icon fas fa-file-export"></i> &nbsp; EXPORT EXCEL</a>
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#importExcel">
-                        <i class="nav-icon fas fa-file-import"></i> &nbsp; IMPORT EXCEL
-                    </button>
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#dropTable">
-                        <i class="nav-icon fas fa-minus-circle"></i> &nbsp; Drop
-                    </button>
--->
+                    <!--
+                                        <a href="{{ route('jadwal.export_excel') }}" class="btn btn-success btn-sm my-3" target="_blank"><i
+                                                class="nav-icon fas fa-file-export"></i> &nbsp; EXPORT EXCEL</a>
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#importExcel">
+                                            <i class="nav-icon fas fa-file-import"></i> &nbsp; IMPORT EXCEL
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#dropTable">
+                                            <i class="nav-icon fas fa-minus-circle"></i> &nbsp; Drop
+                                        </button>
+                    -->
                 </h3>
             </div>
             <div class="modal fade" id="importExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -163,13 +163,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="jam_mulai">Jam Mulai</label>
-                                    <input type='text' id="jam_mulai" name='jam_mulai'
+                                    <input type='time' id="jam_mulai" name='jam_mulai'
                                         class="form-control @error('jam_mulai') is-invalid @enderror jam_mulai"
                                         placeholder="{{ Date('H:i') }}">
+                                    {{-- <div id="statusJam"></div> --}}
                                 </div>
                                 <div class="form-group">
                                     <label for="jam_selesai">Jam Selesai</label>
-                                    <input type='text' id="jam_selesai" name='jam_selesai'
+                                    <input type='time' id="jam_selesai" name='jam_selesai'
                                         class="form-control @error('jam_selesai') is-invalid @enderror"
                                         placeholder="{{ Date('H:i') }}">
                                 </div>
@@ -189,7 +190,8 @@
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><i
                             class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</button>
-                    <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> &nbsp;
+                    <button id="saveJadwal" type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i>
+                        &nbsp;
                         Tambahkan</button>
                     </form>
                 </div>
@@ -198,6 +200,7 @@
     </div>
 @endsection
 @section('script')
+    <script src="{{ asset('plugins/akm/js/akm.js') }}"></script>
     <script>
         $("#MasterData").addClass("active");
         $("#liMasterData").addClass("menu-open");

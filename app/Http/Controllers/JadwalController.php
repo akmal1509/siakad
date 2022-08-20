@@ -302,8 +302,48 @@ class JadwalController extends Controller
 
         //     return view('admin.jadwal.ajax_single', compact('guru'));
         // } else {
-            $guru = Guru::get();
-            return view('admin.jadwal.ajax_multiple', compact('guru'));
+        $guru = Guru::get();
+        return view('admin.jadwal.ajax_multiple', compact('guru'));
         // }
+    }
+
+    public function cekJamMulai(Request $request)
+    {
+        $jm = $request->jam . ':00';
+        // $jam = Jadwal::where('jam_mulai', '>=', $jm)->where('jam_selesai', '<=', $jm)->get()->count();
+        // $jam = Jadwal::all()->where([
+        //     'jam_mulai >=' => $jm,
+        //     // 'jam_selesai<=' => $jm
+        // ])->count();
+        $jam = Jadwal::all();
+
+
+
+        $output = [];
+        foreach ($jam as $item) {
+            if ($item['jam_mulai'] > $jm) {
+                $output[] = 'success';
+            } elseif ($item['jam_selesai'] < $jm) {
+                $output[] = 'success';
+            } else {
+                $output[] = 'failed';
+            }
+        };
+        // $output = [];
+        // $i = 1;
+        // foreach ($jam as $item) {
+        //     if ($item['jam_mulai'] > $jm) {
+        //         $output[$i] = 'success';
+        //     } elseif ($item['jam_mulai'] == $jm) {
+        //         $output[$i] = 'failed';
+        //     }
+        //     $i++;
+        // };
+        $data = [
+            'ju' => $jm,
+            // 'ja' => $jam
+            'cek' => $output
+        ];
+        return $data;
     }
 }

@@ -91,7 +91,7 @@
                                     @php
                                         $array = array('mapel' => $val, 'siswa' => $siswa->id);
                                         $jsonData = json_encode($array);
-                                    @endphp
+                                        @endphp
                                     <td class="ctr">{{ $data->cekRapot($jsonData)['p_nilai'] }}</td>
                                     <td class="ctr">{{ $data->cekRapot($jsonData)['p_predikat'] }}</td>
                                     <td class="ctr">{{ $data->cekRapot($jsonData)['p_deskripsi'] }}</td>
